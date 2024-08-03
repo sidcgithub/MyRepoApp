@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.myrepoapp.android.application)
     alias(libs.plugins.myrepoapp.android.application.compose)
     alias(libs.plugins.myrepoapp.hilt)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -41,7 +42,10 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.kotlinx.serialization.json)
     ksp(libs.hilt.compiler)
+    testImplementation(libs.androidx.navigation.testing)
     testImplementation(libs.junit)
     kspTest(libs.hilt.compiler)
     androidTestImplementation(libs.androidx.junit)
