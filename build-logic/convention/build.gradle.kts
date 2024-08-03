@@ -44,6 +44,10 @@ gradlePlugin {
             id = "myrepoapp.android.application"
             implementationClass = "AndroidApplicationConventionPlugin"
         }
+        register("hilt") {
+            id = "myrepoapp.hilt"
+            implementationClass = "HiltConventionPlugin"
+        }
     }
 }
 

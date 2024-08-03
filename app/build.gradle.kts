@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.myrepoapp.android.application)
     alias(libs.plugins.myrepoapp.android.application.compose)
+    alias(libs.plugins.myrepoapp.hilt)
 }
 
 android {
@@ -40,7 +41,9 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.material3)
+    ksp(libs.hilt.compiler)
     testImplementation(libs.junit)
+    kspTest(libs.hilt.compiler)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.androidx.ui.test.junit4)
