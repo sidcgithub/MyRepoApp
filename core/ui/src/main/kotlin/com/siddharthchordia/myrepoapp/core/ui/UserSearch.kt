@@ -1,4 +1,4 @@
-package xom.siddharthchordia.myrepoapp.core.ui
+package com.siddharthchordia.myrepoapp.core.ui
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -13,7 +13,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.siddharthchordia.myrepoapp.core.model.data.Repo
-import com.siddharthchordia.myrepoapp.core.ui.R
 
 @Composable
 fun UserSearchComponent(

@@ -1,4 +1,4 @@
-package xom.siddharthchordia.myrepoapp.core.ui
+package com.siddharthchordia.myrepoapp.core.ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column

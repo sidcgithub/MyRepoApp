@@ -15,9 +15,9 @@ import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import xom.siddharthchordia.myrepoapp.core.ui.ProfileAvatar
-import xom.siddharthchordia.myrepoapp.core.ui.RepoList
-import xom.siddharthchordia.myrepoapp.core.ui.UserSearchComponent
+import com.siddharthchordia.myrepoapp.core.ui.ProfileAvatar
+import com.siddharthchordia.myrepoapp.core.ui.RepoList
+import com.siddharthchordia.myrepoapp.core.ui.UserSearchComponent
 
 @Composable
 fun UserSearch(viewModel: UserSearchViewModel, innerPadding: PaddingValues) {

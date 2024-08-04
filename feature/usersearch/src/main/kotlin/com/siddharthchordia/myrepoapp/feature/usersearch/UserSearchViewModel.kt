@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import xom.siddharthchordia.myrepoapp.core.ui.SearchResultUiState
+import com.siddharthchordia.myrepoapp.core.ui.SearchResultUiState
 import javax.inject.Inject
 
 @HiltViewModel
