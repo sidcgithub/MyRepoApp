@@ -23,6 +23,7 @@ dependencyResolutionManagement {
 rootProject.name = "MyRepoApp"
 include(":app")
 include(":core:model")
+include(":core:testing")
 include(":core:ui")
 include(":feature:navigationshell")
 include(":feature:usersearch")

@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="search_label">Enter a github user id</string>
-    <string name="search_button_label">Search</string>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="search_label" tools:ignore="ResourceName">Enter a github user id</string>
+    <string name="search_button_label" tools:ignore="ResourceName">Search</string>
+    <string name="empty_query_error" tools:ignore="ResourceName">Please enter a search query.</string>
+    <string name="loading_status" tools:ignore="ResourceName">Loading...</string>
+    <string name="search_error_status" tools:ignore="ResourceName">Failed to load search results.</string>
 </resources>

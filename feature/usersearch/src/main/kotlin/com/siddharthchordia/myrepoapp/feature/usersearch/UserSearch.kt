@@ -13,9 +13,10 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.res.dimensionResource
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.siddharthchordia.myrepoapp.core.ui.ProfileAvatar
+import com.siddharthchordia.myrepoapp.core.ui.R
 import com.siddharthchordia.myrepoapp.core.ui.RepoList
 import com.siddharthchordia.myrepoapp.core.ui.UserSearchComponent
 
@@ -35,7 +36,13 @@ fun UserSearch(viewModel: UserSearchViewModel, innerPadding: PaddingValues) {
             onSearchButtonClicked = { viewModel.onSearchUpdateButtonClicked(searchQuery.value) },
         ) {
             Column(Modifier.fillMaxSize()) {
-                Row(Modifier.fillMaxWidth().padding(16.dp), verticalAlignment = CenterVertically, horizontalArrangement = Arrangement.SpaceEvenly) {
+                Row(
+                    Modifier
+                        .fillMaxWidth()
+                        .padding(dimensionResource(id = R.dimen.padding_medium)),
+                    verticalAlignment = CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceEvenly,
+                ) {
                     ProfileAvatar(searchResultUiState.value)
                 }
                 RepoList(searchResultUiState.value)

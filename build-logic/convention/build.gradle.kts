@@ -63,6 +63,10 @@ gradlePlugin {
             id = "myrepoapp.jvm.library"
             implementationClass = "JvmLibraryConventionPlugin"
         }
+        register("androidTest") {
+            id = "myrepoapp.android.test"
+            implementationClass = "AndroidTestConventionPlugin"
+        }
     }
 }
 

@@ -9,8 +9,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
 
 @Composable
@@ -21,9 +21,15 @@ fun ProfileAvatar(searchResultUiState: SearchResultUiState) {
                 painter = rememberAsyncImagePainter(searchResultUiState.avatarUrl),
                 contentDescription = "User Avatar",
                 modifier = Modifier
-                    .size(100.dp),
+                    .size(dimensionResource(id = R.dimen.image_large)),
             )
-            Text(text = "Username", modifier = Modifier.fillMaxWidth().padding(16.dp), textAlign = TextAlign.Center)
+            Text(
+                text = "Username",
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(dimensionResource(id = R.dimen.padding_medium)),
+                textAlign = TextAlign.Center,
+            )
         }
     }
 }

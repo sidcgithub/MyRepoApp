@@ -13,31 +13,96 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.siddharthchordia.myrepoapp.core.model.data.Repo
 
 @Composable
 fun RepoList(searchResultUiState: SearchResultUiState) {
     when (searchResultUiState) {
-        is SearchResultUiState.Loading -> Text(modifier = Modifier.padding(horizontal = 8.dp), text = "Loading...")
-        is SearchResultUiState.EmptyQuery -> Text(modifier = Modifier.padding(horizontal = 8.dp), text = "Please enter a search query.")
-        is SearchResultUiState.LoadFailed -> Text(modifier = Modifier.padding(horizontal = 8.dp), text = "Failed to load search results.")
+        is SearchResultUiState.Loading -> Text(
+            modifier = Modifier.padding(
+                horizontal = dimensionResource(
+                    id = R.dimen.padding_small,
+                ),
+            ),
+            text = stringResource(R.string.loading_status),
+        )
+
+        is SearchResultUiState.EmptyQuery -> Text(
+            modifier = Modifier.padding(
+                horizontal = dimensionResource(
+                    id = R.dimen.padding_small,
+                ),
+            ),
+            text = stringResource(R.string.empty_query_error),
+        )
+
+        is SearchResultUiState.LoadFailed -> Text(
+            modifier = Modifier.padding(
+                horizontal = dimensionResource(
+                    id = R.dimen.padding_small,
+                ),
+            ),
+            text = stringResource(R.string.search_error_status),
+        )
+
         is SearchResultUiState.Success -> {
-            LazyColumn(contentPadding = PaddingValues(horizontal = 8.dp, vertical = 8.dp)) {
+            LazyColumn(
+                contentPadding = PaddingValues(
+                    horizontal = dimensionResource(
+                        id = R.dimen.padding_small,
+                    ),
+                    vertical = dimensionResource(
+                        id = R.dimen.padding_small,
+                    ),
+                ),
+            ) {
                 items(searchResultUiState.repoList.size) { index ->
                     val repo = searchResultUiState.repoList[index]
-                    Card(modifier = Modifier.fillMaxWidth().padding(16.dp), elevation = CardDefaults.cardElevation(8.dp)) {
-                        Column(modifier = Modifier.fillMaxWidth().padding(16.dp)) {
+                    Card(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(
+                                dimensionResource(
+                                    id = R.dimen.padding_medium,
+                                ),
+                            ),
+                        elevation = CardDefaults.cardElevation(
+                            dimensionResource(
+                                id = R.dimen.padding_small,
+                            ),
+                        ),
+                    ) {
+                        Column(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(
+                                    dimensionResource(
+                                        id = R.dimen.padding_medium,
+                                    ),
+                                ),
+                        ) {
                             Text(
                                 text = repo.name,
                                 style = MaterialTheme.typography.titleMedium,
                             )
-                            Spacer(modifier = Modifier.height(16.dp))
+                            Spacer(
+                                modifier = Modifier.height(
+                                    dimensionResource(
+                                        id = R.dimen.padding_medium,
+                                    ),
+                                ),
+                            )
                             Text(
                                 text = repo.description,
                                 style = MaterialTheme.typography.bodyMedium,
-                                modifier = Modifier.padding(horizontal = 16.dp),
+                                modifier = Modifier.padding(
+                                    horizontal = dimensionResource(
+                                        id = R.dimen.padding_medium,
+                                    ),
+                                ),
                             )
                         }
                     }

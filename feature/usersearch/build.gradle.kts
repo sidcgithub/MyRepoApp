@@ -12,5 +12,6 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
     implementation(project(":core:model"))
     implementation(project(":core:ui"))
+    testImplementation(project(":core:testing"))
     androidTestImplementation(libs.androidx.test.runner)
 }
