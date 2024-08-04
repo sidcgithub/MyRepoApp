@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <dimen name="padding_small" tools:ignore="ResourceName">8dp</dimen>
+    <dimen name="padding_medium" tools:ignore="ResourceName">16dp</dimen>
+    <dimen name="image_large" tools:ignore="ResourceName">100dp</dimen>
+</resources>

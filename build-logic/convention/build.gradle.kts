@@ -59,6 +59,14 @@ gradlePlugin {
             id = "myrepoapp.android.feature"
             implementationClass = "AndroidFeatureConventionPlugin"
         }
+        register("jvmLibrary") {
+            id = "myrepoapp.jvm.library"
+            implementationClass = "JvmLibraryConventionPlugin"
+        }
+        register("androidTest") {
+            id = "myrepoapp.android.test"
+            implementationClass = "AndroidTestConventionPlugin"
+        }
     }
 }
 
