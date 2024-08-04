@@ -22,3 +22,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "MyRepoApp"
 include(":app")
+include(":feature:navigationshell")

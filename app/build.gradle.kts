@@ -44,6 +44,7 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.kotlinx.serialization.json)
+    implementation(project(":feature:navigationshell"))
     ksp(libs.hilt.compiler)
     testImplementation(libs.androidx.navigation.testing)
     testImplementation(libs.junit)

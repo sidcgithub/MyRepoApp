@@ -1,5 +1,4 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     `kotlin-dsl`
@@ -47,6 +46,18 @@ gradlePlugin {
         register("hilt") {
             id = "myrepoapp.hilt"
             implementationClass = "HiltConventionPlugin"
+        }
+        register("androidLibrary") {
+            id = "myrepoapp.android.library"
+            implementationClass = "AndroidLibraryConventionPlugin"
+        }
+        register("androidLibraryCompose") {
+            id = "myrepoapp.android.library.compose"
+            implementationClass = "AndroidLibraryComposeConventionPlugin"
+        }
+        register("androidFeature") {
+            id = "myrepoapp.android.feature"
+            implementationClass = "AndroidFeatureConventionPlugin"
         }
     }
 }
