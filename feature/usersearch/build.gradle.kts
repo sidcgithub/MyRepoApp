@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.siddharthchordia.myrepoapp.feature.navigationshell"
+    namespace = "com.siddharthchordia.myrepoapp.feature.usersearch"
 }
 
 dependencies {

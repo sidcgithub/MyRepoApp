@@ -1,18 +1,17 @@
 package com.siddharthchordia.myrepoapp.navigation
 
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.style.TextAlign
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.siddharthchordia.myrepoapp.feature.navigationshell.MyRepoAppScaffold
 import com.siddharthchordia.myrepoapp.feature.navigationshell.ScreenNavParams
+import com.siddharthchordia.myrepoapp.feature.usersearch.UserSearch
+import com.siddharthchordia.myrepoapp.feature.usersearch.UserSearchViewModel
 
 @Composable
 fun MyRepoAppHost(
@@ -26,11 +25,8 @@ fun MyRepoAppHost(
         modifier = modifier,
     ) {
         scaffoldedComposable<Route.Home>(ScreenNavParams(navController)) { innerPadding ->
-            Text(
-                text = "Hello, World!",
-                modifier = Modifier.fillMaxSize().padding(innerPadding),
-                textAlign = TextAlign.Center,
-            )
+            val searchViewModel: UserSearchViewModel = hiltViewModel()
+            UserSearch(searchViewModel, innerPadding)
         }
     }
 }
