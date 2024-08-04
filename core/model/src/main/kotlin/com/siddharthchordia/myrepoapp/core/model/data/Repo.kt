@@ -1,4 +1,4 @@
-package com.siddharthchordia.myrepoapp.feature.usersearch.model
+package com.siddharthchordia.myrepoapp.core.model.data
 
 data class Repo(
     val name: String,
