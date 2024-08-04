@@ -18,8 +18,11 @@ kotlinxCoroutines = "1.8.0"
 ksp = "2.0.0-1.0.21"
 espressoCore = "3.6.1"
 lifecycleRuntimeKtx = "2.8.2"
+okhttp = "4.12.0"
 activityCompose = "1.9.0"
 composeBom = "2023.08.00"
+retrofit = "2.9.0"
+retrofitKotlinxSerializationJson = "1.0.0"
 serialization = "1.6.3"
 
 [libraries]
@@ -55,8 +58,12 @@ hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.r
 hilt-core = { group = "com.google.dagger", name = "hilt-core", version.ref = "hilt" }
 hilt-ext-compiler = { group = "androidx.hilt", name = "hilt-compiler", version.ref = "hiltExt" }
 hilt-ext-work = { group = "androidx.hilt", name = "hilt-work", version.ref = "hiltExt" }
+javax-inject = { module = "javax.inject:javax.inject", version = "1" }
 kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinxCoroutines" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serialization"}
+okhttp-logging = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
+retrofit-core = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+retrofit-kotlin-serialization = { group = "com.jakewharton.retrofit", name = "retrofit2-kotlinx-serialization-converter", version.ref = "retrofitKotlinxSerializationJson" }
 
 
 # Dependencies of the included build-logic
