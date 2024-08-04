@@ -3,13 +3,13 @@ package com.siddharthchordia.myrepoapp.feature.usersearch
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.siddharthchordia.myrepoapp.core.model.data.Repo
+import com.siddharthchordia.myrepoapp.core.ui.SearchResultUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import com.siddharthchordia.myrepoapp.core.ui.SearchResultUiState
 import javax.inject.Inject
 
 @HiltViewModel
@@ -35,35 +35,35 @@ class UserSearchViewModel @Inject constructor() : ViewModel() {
                     repoList = listOf(
                         Repo(
                             "Repo 1",
-                            "Description 1",
+                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                             "2022-01-01",
                             100,
                             50,
                         ),
                         Repo(
                             "Repo 2",
-                            "Description 2",
+                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                             "2022-01-02",
                             200,
                             60,
                         ),
                         Repo(
                             "Repo 3",
-                            "Description 3",
+                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                             "2022-01-03",
                             300,
                             70,
                         ),
                         Repo(
                             "Repo 4",
-                            "Description 4",
+                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                             "2022-01-04",
                             400,
                             80,
                         ),
                         Repo(
                             "Repo 5",
-                            "Description 5",
+                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                             "2022-01-05",
                             500,
                             90,
