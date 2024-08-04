@@ -11,6 +11,7 @@ hilt = "2.51.1"
 hiltExt = "1.1.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
+junitRunner = "1.4.0"
 ksp = "2.0.0-1.0.21"
 espressoCore = "3.6.1"
 lifecycleRuntimeKtx = "2.8.2"
@@ -24,6 +25,7 @@ android-desugarJdkLibs = { group = "com.android.tools", name = "desugar_jdk_libs
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+androidx-test-runner = { group = "androidx.test", name = "runner", version.ref = "junitRunner" }
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }

@@ -9,8 +9,8 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.siddharthchordia.myrepoapp.core.navigationshell.MyRepoAppScaffold
-import com.siddharthchordia.myrepoapp.core.navigationshell.ScreenNavParams
+import com.siddharthchordia.myrepoapp.feature.navigationshell.MyRepoAppScaffold
+import com.siddharthchordia.myrepoapp.feature.navigationshell.ScreenNavParams
 
 @Composable
 fun MyRepoAppHost(
