@@ -1,10 +1,12 @@
 package com.siddharthchordia.myrepoapp.navigation
 
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextAlign
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -26,13 +28,14 @@ fun MyRepoAppHost(
         scaffoldedComposable<Route.Home>(ScreenNavParams(navController)) { innerPadding ->
             Text(
                 text = "Hello, World!",
-                modifier = Modifier.padding(innerPadding),
+                modifier = Modifier.fillMaxSize().padding(innerPadding),
+                textAlign = TextAlign.Center,
             )
         }
     }
 }
 
-inline fun <reified T : Any> NavGraphBuilder.scaffoldedComposable(
+inline fun <reified T : Route> NavGraphBuilder.scaffoldedComposable(
     screenNavParams: ScreenNavParams,
     crossinline content: @Composable (innerPadding: PaddingValues) -> Unit,
 ) {
