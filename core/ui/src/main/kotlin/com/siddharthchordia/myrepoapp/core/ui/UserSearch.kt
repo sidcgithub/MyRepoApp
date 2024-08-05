@@ -49,7 +49,7 @@ fun UserSearchComponent(
 
 sealed interface SearchResultUiState {
     data object Loading : SearchResultUiState
-    data object EmptyQuery : SearchResultUiState
+    data class EmptyQuery(val message: String = "Please enter a search query") : SearchResultUiState
 
     data object LoadFailed : SearchResultUiState
 

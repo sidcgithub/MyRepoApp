@@ -37,7 +37,7 @@ fun RepoList(searchResultUiState: SearchResultUiState, action: (Repo) -> Unit = 
                     id = R.dimen.padding_small,
                 ),
             ),
-            text = stringResource(R.string.empty_query_error),
+            text = searchResultUiState.message,
         )
 
         is SearchResultUiState.LoadFailed -> Text(

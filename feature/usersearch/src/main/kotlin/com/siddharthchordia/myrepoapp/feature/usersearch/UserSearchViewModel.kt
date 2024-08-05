@@ -13,6 +13,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.drop
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.map
@@ -35,10 +36,10 @@ class UserSearchViewModel @Inject constructor(
     @VisibleForTesting
     internal val mutableTotalForks: MutableStateFlow<Long> = MutableStateFlow(0)
 
-    val searchResultUiState: StateFlow<SearchResultUiState> = searchQuery
+    val searchResultUiState: StateFlow<SearchResultUiState> = searchQuery.drop(1)
         .flatMapLatest { query: String ->
             if (query.isBlank()) {
-                flowOf(SearchResultUiState.EmptyQuery)
+                flowOf(SearchResultUiState.EmptyQuery("Invalid input. Query cannot be blank."))
             } else {
 
                 getUserSearchUseCase(query)
@@ -60,7 +61,7 @@ class UserSearchViewModel @Inject constructor(
         .stateIn(
             scope = viewModelScope,
             started = SharingStarted.WhileSubscribed(5_000),
-            initialValue = SearchResultUiState.EmptyQuery,
+            initialValue = SearchResultUiState.EmptyQuery(),
         )
 
     fun onSearchQueryChanged(query: String) {
