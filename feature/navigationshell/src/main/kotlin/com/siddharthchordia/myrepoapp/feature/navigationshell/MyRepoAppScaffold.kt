@@ -24,8 +24,10 @@ fun MyRepoAppScaffold(screenNavParams: ScreenNavParams, screen: @Composable (Pad
             TopAppBar(
                 title = { Text(stringResource(R.string.take_home_title)) },
                 navigationIcon = {
-                    IconButton(onClick = { screenNavParams.navController.navigateUp() }) {
-                        Icon(Icons.Filled.ArrowBack, contentDescription = "Back")
+                    if (screenNavParams is ScreenNavParams.BackEnabled) {
+                        IconButton(onClick = { screenNavParams.backNav() }) {
+                            Icon(Icons.Filled.ArrowBack, contentDescription = "Back")
+                        }
                     }
                 },
             )
@@ -35,4 +37,7 @@ fun MyRepoAppScaffold(screenNavParams: ScreenNavParams, screen: @Composable (Pad
     }
 }
 
-data class ScreenNavParams(val navController: NavController, val backNavigation: () -> Unit = {})
+sealed class ScreenNavParams(open val navController: NavController) {
+    data class BackEnabled(override val navController: NavController, val backNav: () -> Unit) : ScreenNavParams(navController)
+    data class NoBack(override val navController: NavController) : ScreenNavParams(navController)
+}

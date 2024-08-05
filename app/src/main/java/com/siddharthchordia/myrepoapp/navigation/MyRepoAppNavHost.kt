@@ -26,12 +26,12 @@ fun MyRepoAppHost(
         startDestination = startDestination,
         modifier = modifier,
     ) {
-        scaffoldedComposable<Route.Home>(ScreenNavParams(navController)) { innerPadding ->
+        scaffoldedComposable<Route.Home>(ScreenNavParams.NoBack(navController)) { innerPadding ->
             val searchViewModel: UserSearchViewModel = hiltViewModel()
             HomeScreen(searchViewModel, { navController.navigate(Route.RepoDetails) }, innerPadding)
         }
 
-        scaffoldedComposable<Route.RepoDetails>(ScreenNavParams(navController)) { innerPadding ->
+        scaffoldedComposable<Route.RepoDetails>(ScreenNavParams.BackEnabled(navController) { navController.navigateUp() }) { innerPadding ->
             val repoDetailsViewModel: RepoDetailsViewModel = hiltViewModel()
             RepoDetailScreen(repoDetailsViewModel, innerPadding)
         }
