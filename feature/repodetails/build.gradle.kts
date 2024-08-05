@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.siddharthchordia.myrepoapp.feature.usersearch"
+    namespace = "com.siddharthchordia.myrepoapp.feature.repodetails"
 }
 
 dependencies {
@@ -14,7 +14,6 @@ dependencies {
     implementation(project(":core:domain"))
     implementation(project(":core:model"))
     implementation(project(":core:ui"))
-    api(project(":feature:repodetails"))
     testImplementation(project(":core:testing"))
     androidTestImplementation(libs.androidx.test.runner)
 }

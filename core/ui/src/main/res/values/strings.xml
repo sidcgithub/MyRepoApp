@@ -5,4 +5,7 @@
     <string name="empty_query_error" tools:ignore="ResourceName">Please enter a search query.</string>
     <string name="loading_status" tools:ignore="ResourceName">Loading...</string>
     <string name="search_error_status" tools:ignore="ResourceName">Failed to load search results.</string>
+    <string name="stargazers_label" tools:ignore="ResourceName">Stargazers: %1$s</string>
+    <string name="additional_details_labels" tools:ignore="ResourceName">Additional Details:</string>
+    <string name="last_updated_label" tools:ignore="ResourceName">Last updated: %1$s</string>
 </resources>

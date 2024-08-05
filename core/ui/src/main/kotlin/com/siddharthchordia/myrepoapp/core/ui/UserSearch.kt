@@ -1,6 +1,7 @@
 package com.siddharthchordia.myrepoapp.core.ui
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -10,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.siddharthchordia.myrepoapp.core.model.data.Repo
@@ -20,8 +22,10 @@ fun UserSearchComponent(
     searchResultUiState: SearchResultUiState,
     onSearchQueryChanged: (String) -> Unit,
     onSearchButtonClicked: () -> Unit,
-    searchResultWidget: @Composable (SearchResultUiState) -> Unit = { RepoList(searchResultUiState = it) },
+    onResultDisplaySelectAction: (Repo) -> Unit = {},
+    searchResultWidget: @Composable (SearchResultUiState, widgetAction: (Repo) -> Unit) -> Unit,
 ) {
+    val keyboardController = LocalSoftwareKeyboardController.current
     Column(modifier = Modifier.fillMaxWidth()) {
         Row(
             modifier = Modifier.fillMaxWidth(),
@@ -36,18 +40,23 @@ fun UserSearchComponent(
                 label = { Text(stringResource(R.string.search_label)) },
             )
 
-            Button(onClick = onSearchButtonClicked) {
+            Button(
+                onClick = {
+                    onSearchButtonClicked()
+                    keyboardController?.hide()
+                },
+            ) {
                 Text(stringResource(R.string.search_button_label))
             }
         }
 
-        searchResultWidget(searchResultUiState)
+        searchResultWidget(searchResultUiState, onResultDisplaySelectAction)
     }
 }
 
 sealed interface SearchResultUiState {
     data object Loading : SearchResultUiState
-    data object EmptyQuery : SearchResultUiState
+    data class EmptyQuery(val message: String = "Please enter a search query") : SearchResultUiState
 
     data object LoadFailed : SearchResultUiState
 
@@ -68,14 +77,14 @@ fun UserSearchPreview() {
         searchResultUiState = SearchResultUiState.Success(
             avatarUrl = "https://example.com/avatar.png",
             repoList = listOf(
-                com.siddharthchordia.myrepoapp.core.model.data.Repo(
+                Repo(
                     "Repo 1",
                     "Description 1",
                     "2022-01-01",
                     100,
                     50,
                 ),
-                com.siddharthchordia.myrepoapp.core.model.data.Repo(
+                Repo(
                     "Repo 2",
                     "Description 2",
                     "2022-01-02",
@@ -86,5 +95,10 @@ fun UserSearchPreview() {
         ),
         onSearchQueryChanged = {},
         onSearchButtonClicked = {},
-    )
+        onResultDisplaySelectAction = { },
+    ) { _, _ ->
+        Box {
+            Text("Search Result")
+        }
+    }
 }
