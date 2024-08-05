@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.siddharthchordia.myrepoapp.core.ui.RepoDetailsComponent
 import com.siddharthchordia.myrepoapp.core.ui.RepoDetailsUiState
@@ -30,11 +31,11 @@ fun RepoDetailScreen(repoDetailsUiState: RepoDetailsUiState) {
             RepoDetailsComponent(repoDetailsUiState)
         }
         RepoDetailsUiState.LoadFailed -> {
-            Text(text = "Failed to load Repo Details")
+            Text(text = stringResource(R.string.error_loading_failed))
         }
 
         RepoDetailsUiState.Loading -> {
-            Text(text = "Loading Repo Details")
+            Text(text = stringResource(R.string.repo_details_loading))
         }
     }
 }

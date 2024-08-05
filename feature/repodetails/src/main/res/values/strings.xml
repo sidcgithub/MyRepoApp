@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="error_loading_failed" tools:ignore="ResourceName">Failed to load Repo Details</string>
+    <string name="repo_details_loading" tools:ignore="ResourceName">Loading Repo Details</string>
+</resources>

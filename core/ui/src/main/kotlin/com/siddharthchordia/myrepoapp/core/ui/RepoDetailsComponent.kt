@@ -19,9 +19,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.siddharthchordia.myrepoapp.core.model.data.Repo
 import com.siddharthchordia.myrepoapp.core.model.data.RepoDetails
 
@@ -46,7 +46,7 @@ fun RepoDetailsComponent(repoDetailsUiState: RepoDetailsUiState.Success) {
             ),
         ),
     ) {
-        Column(modifier = Modifier.padding(16.dp)) {
+        Column(modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_medium))) {
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceEvenly,
@@ -57,7 +57,7 @@ fun RepoDetailsComponent(repoDetailsUiState: RepoDetailsUiState.Success) {
                     Icon(
                         imageVector = Icons.Default.Star,
                         contentDescription = "Star badge",
-                        modifier = Modifier.padding(16.dp),
+                        modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_medium)),
                         tint = Color(0xFFD4AF37),
                     )
                 }
@@ -65,24 +65,24 @@ fun RepoDetailsComponent(repoDetailsUiState: RepoDetailsUiState.Success) {
                     text = "${repo.forks} forks out of $totalForks",
                     color = badgeColor,
                     style = MaterialTheme.typography.bodyMedium,
-                    modifier = Modifier.padding(16.dp),
+                    modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_medium)),
                 )
             }
 
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.padding_small)))
             Text(
                 text = repo.description ?: "No description available",
                 style = MaterialTheme.typography.bodyLarge,
             )
 
-            Spacer(modifier = Modifier.height(16.dp))
-            Text(text = "Additional Details:", style = MaterialTheme.typography.bodyLarge)
+            Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.padding_medium)))
+            Text(text = stringResource(R.string.additional_details_labels), style = MaterialTheme.typography.bodyLarge)
             Text(
-                text = "Last updated: ${repo.updatedAt}",
+                text = stringResource(R.string.last_updated_label, repo.updatedAt),
                 style = MaterialTheme.typography.bodyMedium,
             )
             Text(
-                text = "Stars: ${repo.stargazersCount}",
+                text = stringResource(R.string.stargazers_label, repo.stargazersCount),
                 style = MaterialTheme.typography.bodyMedium,
             )
         }
