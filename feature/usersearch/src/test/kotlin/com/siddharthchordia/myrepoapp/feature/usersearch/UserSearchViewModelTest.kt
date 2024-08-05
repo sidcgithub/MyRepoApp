@@ -1,18 +1,35 @@
 package com.siddharthchordia.myrepoapp.feature.usersearch
 
+import androidx.lifecycle.SavedStateHandle
+import com.siddharthchordia.myrepoapp.core.domain.GetUserSearchUseCase
+import com.siddharthchordia.myrepoapp.core.model.data.Repo
+import com.siddharthchordia.myrepoapp.core.model.data.SearchResult
 import com.siddharthchordia.myrepoapp.core.testing.MainDispatcherRule
 import com.siddharthchordia.myrepoapp.core.ui.SearchResultUiState
-import kotlinx.coroutines.test.advanceTimeBy
+import io.mockk.every
+import io.mockk.mockk
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.toList
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.test.UnconfinedTestDispatcher
+import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Rule
 import org.junit.Test
+import kotlin.test.BeforeTest
 
 class UserSearchViewModelTest {
     @get:Rule
     val mainDispatcherRule = MainDispatcherRule()
 
-    private val viewModel = UserSearchViewModel()
+    private val useCase = mockk<GetUserSearchUseCase>()
+    private lateinit var viewModel: UserSearchViewModel
+
+    @BeforeTest
+    fun setup() {
+        viewModel = UserSearchViewModel(useCase, SavedStateHandle())
+    }
 
     @Test
     fun `initial state is EmptyQuery`() {
@@ -21,21 +38,36 @@ class UserSearchViewModelTest {
 
     @Test
     fun `onSearchUpdateButtonClicked with empty query keeps state as EmptyQuery`() = runTest {
-        viewModel.onSearchUpdateButtonClicked("")
+        viewModel.onSearchQueryChanged("")
         assertEquals(SearchResultUiState.EmptyQuery, viewModel.searchResultUiState.value)
     }
 
     @Test
     fun `onSearchUpdateButtonClicked with non-empty query sets state to Loading then Success`() = runTest {
-        viewModel.onSearchUpdateButtonClicked("query")
-        assertEquals(SearchResultUiState.Loading, viewModel.searchResultUiState.value)
-        advanceTimeBy(2000)
-        assert(viewModel.searchResultUiState.value is SearchResultUiState.Success)
+        val mockResultFlow = flow {
+            emit(SearchResult(username = "username", avatarUrl = "avatarUrl", repoList = listOf(Repo("name", "description", "1", 1, 3))))
+        }
+
+        every { useCase(any<String>()) } returns mockResultFlow
+
+        val states = mutableListOf<SearchResultUiState>()
+
+        viewModel.onSearchQueryChanged("query")
+
+        val collectJob = launch(UnconfinedTestDispatcher()) {
+            viewModel.searchResultUiState.toList(states)
+        }
+
+        advanceUntilIdle()
+
+        assert(states.last() is SearchResultUiState.Success)
+
+        collectJob.cancel()
     }
 
     @Test
     fun `onSearchUpdateButtonClicked updates searchQuery state`() = runTest {
-        viewModel.onSearchUpdateButtonClicked("query")
+        viewModel.onSearchQueryChanged("query")
         assertEquals("query", viewModel.searchQuery.value)
     }
 }
