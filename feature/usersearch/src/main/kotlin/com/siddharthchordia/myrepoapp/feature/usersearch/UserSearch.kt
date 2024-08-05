@@ -33,7 +33,7 @@ fun UserSearch(viewModel: UserSearchViewModel, innerPadding: PaddingValues) {
             searchQuery = searchQuery.value,
             searchResultUiState = searchResultUiState.value,
             onSearchQueryChanged = { newValue -> searchQuery.value = newValue },
-            onSearchButtonClicked = { viewModel.onSearchUpdateButtonClicked(searchQuery.value) },
+            onSearchButtonClicked = { viewModel.onSearchQueryChanged(searchQuery.value) },
         ) {
             Column(Modifier.fillMaxSize()) {
                 Row(

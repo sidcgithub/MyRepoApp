@@ -10,6 +10,7 @@ android {
 dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.androidx.navigation.compose)
+    implementation(project(":core:domain"))
     implementation(project(":core:model"))
     implementation(project(":core:ui"))
     testImplementation(project(":core:testing"))

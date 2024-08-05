@@ -53,9 +53,10 @@ sealed interface SearchResultUiState {
 
     data class Success(
         val avatarUrl: String = "",
+        val username: String = "",
         val repoList: List<Repo> = emptyList(),
     ) : SearchResultUiState {
-        fun isEmpty(): Boolean = avatarUrl.isBlank() && repoList.isEmpty()
+        fun isEmpty(): Boolean = avatarUrl.isBlank() && repoList.isEmpty() && username.isBlank()
     }
 }
 

@@ -24,7 +24,7 @@ fun ProfileAvatar(searchResultUiState: SearchResultUiState) {
                     .size(dimensionResource(id = R.dimen.image_large)),
             )
             Text(
-                text = "Username",
+                text = searchResultUiState.username,
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(dimensionResource(id = R.dimen.padding_medium)),
