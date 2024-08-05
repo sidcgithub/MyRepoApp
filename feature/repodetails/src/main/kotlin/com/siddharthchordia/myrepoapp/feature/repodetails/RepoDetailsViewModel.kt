@@ -32,6 +32,6 @@ class RepoDetailsViewModel @Inject constructor(
         .stateIn(
             scope = viewModelScope,
             started = SharingStarted.WhileSubscribed(5_000),
-            initialValue = RepoDetailsUiState.LoadFailed,
+            initialValue = RepoDetailsUiState.Loading,
         )
 }

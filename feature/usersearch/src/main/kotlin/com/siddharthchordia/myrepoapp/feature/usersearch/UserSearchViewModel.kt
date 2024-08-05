@@ -1,5 +1,6 @@
 package com.siddharthchordia.myrepoapp.feature.usersearch
 
+import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -30,7 +31,9 @@ class UserSearchViewModel @Inject constructor(
     }
 
     val searchQuery = savedStateHandle.getStateFlow(key = SEARCH_QUERY, initialValue = "")
-    private val mutableTotalForks: MutableStateFlow<Long> = MutableStateFlow(0)
+
+    @VisibleForTesting
+    internal val mutableTotalForks: MutableStateFlow<Long> = MutableStateFlow(0)
 
     val searchResultUiState: StateFlow<SearchResultUiState> = searchQuery
         .flatMapLatest { query: String ->
