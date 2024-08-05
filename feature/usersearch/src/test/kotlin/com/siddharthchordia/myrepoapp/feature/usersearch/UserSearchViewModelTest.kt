@@ -28,22 +28,23 @@ class UserSearchViewModelTest {
     private val useCase = mockk<GetUserSearchUseCase>()
     private lateinit var repoDetailsFlow: MutableStateFlow<RepoDetails?>
     private lateinit var viewModel: UserSearchViewModel
+    val savedStateHandle = SavedStateHandle()
 
     @BeforeTest
     fun setup() {
         repoDetailsFlow = MutableStateFlow(null)
-        viewModel = UserSearchViewModel(useCase, repoDetailsFlow, SavedStateHandle())
+        viewModel = UserSearchViewModel(useCase, repoDetailsFlow, savedStateHandle)
     }
 
     @Test
     fun `initial state is EmptyQuery`() {
-        assertEquals(SearchResultUiState.EmptyQuery, viewModel.searchResultUiState.value)
+        assert(viewModel.searchResultUiState.value is SearchResultUiState.EmptyQuery)
     }
 
     @Test
     fun `onSearchUpdateButtonClicked with empty query keeps state as EmptyQuery`() = runTest {
         viewModel.onSearchQueryChanged("")
-        assertEquals(SearchResultUiState.EmptyQuery, viewModel.searchResultUiState.value)
+        assert(viewModel.searchResultUiState.value is SearchResultUiState.EmptyQuery)
     }
 
     @Test
@@ -62,13 +63,10 @@ class UserSearchViewModelTest {
             every { useCase(any<String>()) } returns mockResultFlow
 
             val states = mutableListOf<SearchResultUiState>()
-
-            viewModel.onSearchQueryChanged("query")
-
             val collectJob = launch(UnconfinedTestDispatcher()) {
                 viewModel.searchResultUiState.toList(states)
             }
-
+            viewModel.onSearchQueryChanged("query")
             advanceUntilIdle()
 
             assert(states.last() is SearchResultUiState.Success)
