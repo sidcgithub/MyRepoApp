@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.siddharthchordia.myrepoapp.core.model.data.Repo
@@ -24,6 +25,7 @@ fun UserSearchComponent(
     onResultDisplaySelectAction: (Repo) -> Unit = {},
     searchResultWidget: @Composable (SearchResultUiState, widgetAction: (Repo) -> Unit) -> Unit,
 ) {
+    val keyboardController = LocalSoftwareKeyboardController.current
     Column(modifier = Modifier.fillMaxWidth()) {
         Row(
             modifier = Modifier.fillMaxWidth(),
@@ -38,7 +40,12 @@ fun UserSearchComponent(
                 label = { Text(stringResource(R.string.search_label)) },
             )
 
-            Button(onClick = onSearchButtonClicked) {
+            Button(
+                onClick = {
+                    onSearchButtonClicked()
+                    keyboardController?.hide()
+                },
+            ) {
                 Text(stringResource(R.string.search_button_label))
             }
         }
