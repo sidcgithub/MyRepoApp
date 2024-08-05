@@ -1,5 +1,6 @@
 package com.siddharthchordia.myrepoapp.core.ui
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
@@ -19,7 +20,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.siddharthchordia.myrepoapp.core.model.data.Repo
 
 @Composable
-fun RepoList(searchResultUiState: SearchResultUiState) {
+fun RepoList(searchResultUiState: SearchResultUiState, action: (Repo) -> Unit = {}) {
     when (searchResultUiState) {
         is SearchResultUiState.Loading -> Text(
             modifier = Modifier.padding(
@@ -64,6 +65,7 @@ fun RepoList(searchResultUiState: SearchResultUiState) {
                     Card(
                         modifier = Modifier
                             .fillMaxWidth()
+                            .clickable { action(repo) }
                             .padding(
                                 dimensionResource(
                                     id = R.dimen.padding_medium,

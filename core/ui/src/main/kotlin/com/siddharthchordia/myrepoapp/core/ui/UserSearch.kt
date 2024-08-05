@@ -1,6 +1,7 @@
 package com.siddharthchordia.myrepoapp.core.ui
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -20,7 +21,8 @@ fun UserSearchComponent(
     searchResultUiState: SearchResultUiState,
     onSearchQueryChanged: (String) -> Unit,
     onSearchButtonClicked: () -> Unit,
-    searchResultWidget: @Composable (SearchResultUiState) -> Unit = { RepoList(searchResultUiState = it) },
+    onResultDisplaySelectAction: (Repo) -> Unit = {},
+    searchResultWidget: @Composable (SearchResultUiState, widgetAction: (Repo) -> Unit) -> Unit,
 ) {
     Column(modifier = Modifier.fillMaxWidth()) {
         Row(
@@ -41,7 +43,7 @@ fun UserSearchComponent(
             }
         }
 
-        searchResultWidget(searchResultUiState)
+        searchResultWidget(searchResultUiState, onResultDisplaySelectAction)
     }
 }
 
@@ -68,14 +70,14 @@ fun UserSearchPreview() {
         searchResultUiState = SearchResultUiState.Success(
             avatarUrl = "https://example.com/avatar.png",
             repoList = listOf(
-                com.siddharthchordia.myrepoapp.core.model.data.Repo(
+                Repo(
                     "Repo 1",
                     "Description 1",
                     "2022-01-01",
                     100,
                     50,
                 ),
-                com.siddharthchordia.myrepoapp.core.model.data.Repo(
+                Repo(
                     "Repo 2",
                     "Description 2",
                     "2022-01-02",
@@ -86,5 +88,10 @@ fun UserSearchPreview() {
         ),
         onSearchQueryChanged = {},
         onSearchButtonClicked = {},
-    )
+        onResultDisplaySelectAction = { },
+    ) { _, _ ->
+        Box {
+            Text("Search Result")
+        }
+    }
 }

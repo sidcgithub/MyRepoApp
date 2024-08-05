@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.ui.Modifier
+import androidx.navigation.compose.rememberNavController
 import com.siddharthchordia.myrepoapp.ui.MyRepoApp
 import com.siddharthchordia.myrepoapp.ui.theme.MyRepoAppTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -16,9 +17,11 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
+            val navController = rememberNavController()
             MyRepoAppTheme {
                 MyRepoApp(
                     modifier = Modifier.fillMaxSize(),
+                    navController = navController,
                 )
             }
         }

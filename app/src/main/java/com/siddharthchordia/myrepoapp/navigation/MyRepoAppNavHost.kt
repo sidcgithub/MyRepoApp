@@ -5,20 +5,22 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraphBuilder
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
 import com.siddharthchordia.myrepoapp.feature.navigationshell.MyRepoAppScaffold
 import com.siddharthchordia.myrepoapp.feature.navigationshell.ScreenNavParams
-import com.siddharthchordia.myrepoapp.feature.usersearch.UserSearch
+import com.siddharthchordia.myrepoapp.feature.repodetails.RepoDetailScreen
+import com.siddharthchordia.myrepoapp.feature.repodetails.RepoDetailsViewModel
+import com.siddharthchordia.myrepoapp.feature.usersearch.HomeScreen
 import com.siddharthchordia.myrepoapp.feature.usersearch.UserSearchViewModel
 
 @Composable
 fun MyRepoAppHost(
     modifier: Modifier = Modifier,
     startDestination: Route = Route.Home,
+    navController: NavHostController,
 ) {
-    val navController = rememberNavController()
     NavHost(
         navController = navController,
         startDestination = startDestination,
@@ -26,7 +28,12 @@ fun MyRepoAppHost(
     ) {
         scaffoldedComposable<Route.Home>(ScreenNavParams(navController)) { innerPadding ->
             val searchViewModel: UserSearchViewModel = hiltViewModel()
-            UserSearch(searchViewModel, innerPadding)
+            HomeScreen(searchViewModel, { navController.navigate(Route.RepoDetails) }, innerPadding)
+        }
+
+        scaffoldedComposable<Route.RepoDetails>(ScreenNavParams(navController)) { innerPadding ->
+            val repoDetailsViewModel: RepoDetailsViewModel = hiltViewModel()
+            RepoDetailScreen(repoDetailsViewModel, innerPadding)
         }
     }
 }
