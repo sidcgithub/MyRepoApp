@@ -47,8 +47,20 @@ class UserSearchViewModelTest {
         assert(viewModel.searchResultUiState.value is SearchResultUiState.EmptyQuery)
     }
 
+    /**
+     * This test function verifies that when the search button is clicked with a non-empty query,
+     * the state of the search results UI is eventually set to Success.
+     *
+     * The function first creates a mock flow of SearchResult objects, which is returned when the
+     * GetUserSearchUseCase is invoked. It then collects the states emitted by the searchResultUiState
+     * flow into a list. After updating the search query, the function waits until all pending tasks
+     * in the test coroutine scope have completed.
+     *
+     * Finally, the function asserts that the last state in the list is a Success state, indicating that
+     * the search operation completed successfully.
+     */
     @Test
-    fun `onSearchUpdateButtonClicked with non-empty query sets state to Loading then Success`() =
+    fun `onSearchUpdateButtonClicked with non-empty query sets state to Success finally`() =
         runTest {
             val mockResultFlow = flow {
                 emit(
