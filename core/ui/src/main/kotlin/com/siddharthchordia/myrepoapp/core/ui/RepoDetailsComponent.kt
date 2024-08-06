@@ -18,6 +18,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -33,6 +34,7 @@ fun RepoDetailsComponent(repoDetailsUiState: RepoDetailsUiState.Success) {
     val badgeColor = if (shouldShowBadge) Color.Red else Color.Unspecified
 
     Card(
+        colors = CardDefaults.cardColors(containerColor = Color.White),
         modifier = Modifier
             .fillMaxWidth()
             .padding(
@@ -45,6 +47,7 @@ fun RepoDetailsComponent(repoDetailsUiState: RepoDetailsUiState.Success) {
                 id = R.dimen.padding_small,
             ),
         ),
+        shape = RectangleShape,
     ) {
         Column(modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_medium))) {
             Row(
@@ -65,6 +68,7 @@ fun RepoDetailsComponent(repoDetailsUiState: RepoDetailsUiState.Success) {
                     text = "${repo.forks} forks out of $totalForks",
                     color = badgeColor,
                     style = MaterialTheme.typography.bodyMedium,
+                    fontWeight = FontWeight.Bold,
                     modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_medium)),
                 )
             }

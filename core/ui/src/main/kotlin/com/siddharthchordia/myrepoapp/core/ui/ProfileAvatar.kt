@@ -10,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import coil.compose.rememberAsyncImagePainter
 
@@ -27,8 +28,9 @@ fun ProfileAvatar(searchResultUiState: SearchResultUiState) {
                 text = searchResultUiState.username,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(dimensionResource(id = R.dimen.padding_medium)),
+                    .padding(top = dimensionResource(id = R.dimen.padding_medium)),
                 textAlign = TextAlign.Center,
+                fontWeight = FontWeight.Bold,
             )
         }
     }

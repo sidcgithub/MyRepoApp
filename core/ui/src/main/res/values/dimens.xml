@@ -3,4 +3,7 @@
     <dimen name="padding_small" tools:ignore="ResourceName">8dp</dimen>
     <dimen name="padding_medium" tools:ignore="ResourceName">16dp</dimen>
     <dimen name="image_large" tools:ignore="ResourceName">100dp</dimen>
+    <dimen name="corner_size_small" tools:ignore="ResourceName">2dp</dimen>
+    <dimen name="button_height" tools:ignore="ResourceName">44dp</dimen>
+    <dimen name="elevation_small" tools:ignore="ResourceName">4dp</dimen>
 </resources>

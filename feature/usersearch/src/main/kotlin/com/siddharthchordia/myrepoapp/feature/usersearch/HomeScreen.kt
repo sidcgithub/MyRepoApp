@@ -1,5 +1,9 @@
 package com.siddharthchordia.myrepoapp.feature.usersearch
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.slideInVertically
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -56,15 +60,27 @@ fun HomeScreen(
 @Composable
 fun SearchResultComponent(uiState: SearchResultUiState, widgetAction: (Repo) -> Unit) {
     Column(Modifier.fillMaxSize()) {
-        Row(
-            Modifier
-                .fillMaxWidth()
-                .padding(dimensionResource(id = R.dimen.padding_medium)),
-            verticalAlignment = CenterVertically,
-            horizontalArrangement = Arrangement.SpaceEvenly,
+        AnimatedVisibility(
+            visible = (uiState is SearchResultUiState.Success && uiState.avatarUrl.isNotBlank()),
+            enter = slideInVertically(
+                animationSpec = tween(durationMillis = 1000),
+                initialOffsetY = { it / 5 },
+            ) + fadeIn(
+                tween(1000),
+                initialAlpha = 0.0f,
+            ),
         ) {
-            ProfileAvatar(uiState)
+            Row(
+                Modifier
+                    .fillMaxWidth()
+                    .padding(dimensionResource(id = R.dimen.padding_medium)),
+                verticalAlignment = CenterVertically,
+                horizontalArrangement = Arrangement.SpaceEvenly,
+            ) {
+                ProfileAvatar(uiState)
+            }
         }
+
         RepoList(uiState, widgetAction)
     }
 }

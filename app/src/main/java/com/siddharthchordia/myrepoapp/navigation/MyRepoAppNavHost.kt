@@ -1,5 +1,7 @@
 package com.siddharthchordia.myrepoapp.navigation
 
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -42,7 +44,9 @@ inline fun <reified T : Route> NavGraphBuilder.scaffoldedComposable(
     screenNavParams: ScreenNavParams,
     crossinline content: @Composable (innerPadding: PaddingValues) -> Unit,
 ) {
-    composable<T> {
+    composable<T>(enterTransition = {
+        return@composable fadeIn(tween(1000))
+    }) {
         MyRepoAppScaffold(screenNavParams) { innerPadding ->
             content(innerPadding)
         }
