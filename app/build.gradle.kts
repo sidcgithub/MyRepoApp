@@ -13,7 +13,7 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "com.siddharthchordia.myrepoapp.CustomJunitRunner"
         vectorDrawables {
             useSupportLibrary = true
         }
@@ -37,8 +37,8 @@ android {
 }
 
 dependencies {
-
-
+    api(project(":core:network"))
+    implementation(libs.androidx.test.core)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -53,8 +53,13 @@ dependencies {
     testImplementation(libs.androidx.navigation.testing)
     testImplementation(libs.junit)
     kspTest(libs.hilt.compiler)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.test.manifest)
+    androidTestImplementation(libs.ui.test.junit4)
+    androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(libs.androidx.test.rules)
+    androidTestImplementation(libs.mockwebserver)
+    androidTestImplementation(libs.androidx.ui.test.junit4)
+    androidTestImplementation(libs.hilt.android.testing)
+    kspAndroidTest(libs.hilt.android.compiler)
+
 }

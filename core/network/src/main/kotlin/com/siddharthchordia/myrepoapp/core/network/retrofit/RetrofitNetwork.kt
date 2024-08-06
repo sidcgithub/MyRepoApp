@@ -10,8 +10,6 @@ import okhttp3.MediaType.Companion.toMediaType
 import retrofit2.Retrofit
 import retrofit2.http.GET
 import retrofit2.http.Path
-import javax.inject.Inject
-import javax.inject.Singleton
 
 internal interface RetrofitNetworkApi {
     @GET("users/{userId}")
@@ -21,15 +19,15 @@ internal interface RetrofitNetworkApi {
     suspend fun getUserRepos(@Path("userId") userId: String): List<Repository>
 }
 
-@Singleton
-internal class RetrofitNetwork @Inject constructor(
+internal class RetrofitNetwork constructor(
     okhttpCallFactory: dagger.Lazy<Call.Factory>,
     networkJson: Json,
+    baseUrl: String,
 ) : NetworkDataSource {
 
     private val networkApi =
         Retrofit.Builder()
-            .baseUrl("https://api.github.com/")
+            .baseUrl(baseUrl)
             .callFactory { okhttpCallFactory.get().newCall(it) }
             .addConverterFactory(networkJson.asConverterFactory("application/json".toMediaType())) // Add JSON converter
             .build()

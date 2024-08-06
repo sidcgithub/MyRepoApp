@@ -14,7 +14,11 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-internal object NetworkModule {
+open class NetworkModule {
+
+    companion object {
+        const val BASE_URL = "https://api.github.com/"
+    }
 
     @Provides
     @Singleton
@@ -36,6 +40,6 @@ internal object NetworkModule {
         okhttpCallFactory: dagger.Lazy<Call.Factory>,
         networkJson: Json,
     ): NetworkDataSource {
-        return RetrofitNetwork(okhttpCallFactory, networkJson)
+        return RetrofitNetwork(okhttpCallFactory, networkJson, BASE_URL)
     }
 }
