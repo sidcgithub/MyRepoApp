@@ -9,6 +9,7 @@ import dagger.hilt.android.testing.HiltTestApplication
 
 class CustomJunitRunner : AndroidJUnitRunner() {
     override fun onCreate(arguments: Bundle?) {
+        // This is required to avoid a crash when using Hilt with Compose tests
         StrictMode.setThreadPolicy(StrictMode.ThreadPolicy.Builder().permitAll().build())
         super.onCreate(arguments)
     }

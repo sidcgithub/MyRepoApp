@@ -61,6 +61,7 @@ class MainActivityTest {
     @Before
     fun setUp() {
         hiltRule.inject()
+        // Set up MockWebServer by providing a Dispatcher that will return the mock response for the corresponding request
         val dispatcher: Dispatcher = object : Dispatcher() {
             override fun dispatch(request: RecordedRequest): MockResponse {
                 return when (request.path) {

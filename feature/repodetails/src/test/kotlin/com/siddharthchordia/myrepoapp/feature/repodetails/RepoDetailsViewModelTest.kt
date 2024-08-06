@@ -33,6 +33,17 @@ class RepoDetailsViewModelTest {
         assertEquals(RepoDetailsUiState.Loading, viewModel.repoDetailsUiState.value)
     }
 
+    /**
+     * This test function verifies that when the `repoDetailsFlow` is updated,
+     * the state of the `repoDetailsUiState` is set to Success.
+     *
+     * The function first creates a list to collect the states emitted by the `repoDetailsUiState` LiveData.
+     * It then creates a `Repo` object and a `RepoDetails` object, and sets the value of `repoDetailsFlow` to the `RepoDetails` object.
+     *
+     * After updating the `repoDetailsFlow`, the function waits until all pending tasks in the test coroutine scope have completed.
+     *
+     * Finally, the function asserts that the last state in the list is a Success state, indicating that the update operation completed successfully.
+     */
     @Test
     fun `repoDetailsFlow update sets state to Success`() = runTest {
         val states = mutableListOf<RepoDetailsUiState>()
