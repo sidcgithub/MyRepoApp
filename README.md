@@ -81,7 +81,7 @@ Throughout development, the architecture was revised to improve the flow of data
 ### Build Logic
 
 - **Objective:** Implement custom build logic for consistent dependency management.
-- **Thought Process:** By centralizing build configurations in a dedicated module, we reduced redundancy and improved maintainability. For detailed build logic, refer to the [Build Logic README](./build-logic/README.md).
+- **Thought Process:** By centralizing build configurations in a dedicated module, I reduced redundancy and improved maintainability. For detailed build logic, refer to the [Build Logic README](./build-logic/README.md).
 
 ### Feature Development
 
@@ -101,7 +101,7 @@ Throughout development, the architecture was revised to improve the flow of data
 
 - **UI Testing:**
    - **Objective:** Ensure the user interface behaves correctly with simulated network responses.
-   - **Thought Process:** Utilizing `MockWebServer`, we were able to simulate API responses and test the UI in a controlled environment, ensuring that the app responds correctly to various data inputs.
+   - **Thought Process:** Utilizing `MockWebServer`, I was able to simulate API responses and test the UI in a controlled environment, ensuring that the app responds correctly to various data inputs.
 
 ### Revisions and Final Architecture
 
