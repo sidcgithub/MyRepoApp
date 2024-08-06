@@ -20,6 +20,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -48,7 +49,7 @@ fun UserSearchComponent(
 
         ) {
             TextField(
-                modifier = Modifier.weight(9f),
+                modifier = Modifier.weight(9f).testTag("searchTextField"),
                 value = searchQuery,
                 onValueChange = onSearchQueryChanged,
                 label = { Text(stringResource(R.string.search_label)) },
@@ -70,7 +71,7 @@ fun UserSearchComponent(
                     keyboardController?.hide()
                 },
                 shape = RoundedCornerShape(CornerSize(dimensionResource(id = R.dimen.corner_size_small))),
-                modifier = Modifier.weight(4f).height(dimensionResource(id = R.dimen.button_height)),
+                modifier = Modifier.weight(4f).height(dimensionResource(id = R.dimen.button_height)).testTag("searchButton"),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = ButtonGray,
                 ),

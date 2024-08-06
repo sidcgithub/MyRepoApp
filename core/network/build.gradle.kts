@@ -19,13 +19,13 @@ android {
 
 dependencies {
     api(project(":core:model"))
-
     implementation(libs.coil.kt)
     implementation(libs.coil.kt.svg)
     implementation(libs.kotlinx.serialization.json)
-    implementation(libs.okhttp.logging)
-    implementation(libs.retrofit.core)
-    implementation(libs.retrofit.kotlin.serialization)
-
+    api(libs.okhttp.logging)
+    api(libs.retrofit.core)
+    api(libs.retrofit.kotlin.serialization)
+    api(libs.mockwebserver)
+    api(libs.hilt.android.testing)
     testImplementation(libs.kotlinx.coroutines.test)
 }
