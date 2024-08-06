@@ -12,4 +12,5 @@ dependencies {
     implementation(libs.coil.kt)
     implementation(libs.coil.kt.compose)
     api(libs.androidx.material3)
+    implementation(libs.accompanist.systemuicontroller)
 }

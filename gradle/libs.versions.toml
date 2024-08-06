@@ -1,4 +1,5 @@
 [versions]
+accompanistSystemuicontroller = "0.27.0"
 agp = "8.4.0"
 androidDesugarJdkLibs = "2.0.4"
 androidTools = "31.4.1"
@@ -27,6 +28,7 @@ retrofitKotlinxSerializationJson = "1.0.0"
 serialization = "1.6.3"
 
 [libraries]
+accompanist-systemuicontroller = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "accompanistSystemuicontroller" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 android-desugarJdkLibs = { group = "com.android.tools", name = "desugar_jdk_libs", version.ref = "androidDesugarJdkLibs" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }

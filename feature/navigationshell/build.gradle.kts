@@ -10,5 +10,6 @@ android {
 dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.androidx.navigation.compose)
+    implementation(project(":core:ui"))
     androidTestImplementation(libs.androidx.test.runner)
 }
